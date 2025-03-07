@@ -1,17 +1,23 @@
 
+
+# Obtener un servicio - Get a service
 GET http://localhost:5209/service?authenticated=true&secure=true
 ###
+
+# Obtener todos los usuarios con script malisioso - Get all users with malicious script
+
 GET http://localhost:5209/api/user?authenticated=true&secure=true&input=<script>alert('Hacked!');</script>
 ###
-# Obtener todos los usuarios
+
+# Obtener todos los usuarios - Get all users
 GET http://localhost:5209/api/user?authenticated=true&secure=true
 ###
 
-# Obtener un usuario por ID
+# Obtener un usuario por ID - Get user by ID
 GET http://localhost:5209/api/user/1?authenticated=true&secure=true
 ###
 
-# Crear un nuevo usuario
+# Crear un nuevo usuario - Create a new user
 POST http://localhost:5209/api/user?authenticated=true&secure=true
 Content-Type: application/json
 X-Api-Key: thisIsABadPassword
@@ -23,7 +29,7 @@ X-Api-Key: thisIsABadPassword
 }
 ###
 
-# Editar un usuario existente
+# Editar un usuario existente - Edit an existing user
 PUT http://localhost:5209/api/user/1?authenticated=true&secure=true
 Content-Type: application/json
 X-Api-Key: thisIsABadPassword
@@ -36,12 +42,12 @@ X-Api-Key: thisIsABadPassword
 }
 ###
 
-# Eliminar un usuario
+# Eliminar un usuario - Delete a user
 DELETE http://localhost:5209/api/user/1?authenticated=true&secure=true
 X-Api-Key: thisIsABadPassword
 ###
 
-# Crear otro usuario
+# Crear otro usuario - Create another user
 POST http://localhost:5209/api/user?authenticated=true&secure=true
 Content-Type: application/json
 X-Api-Key: thisIsABadPassword
@@ -54,15 +60,15 @@ X-Api-Key: thisIsABadPassword
 
 ###
 
-# Obtener todos los usuarios después de crear nuevos usuarios
+# Obtener todos los usuarios después de crear nuevos usuarios - Get all users after creating new users
 GET http://localhost:5209/api/user?authenticated=true&secure=true
 ###
-# Obtener usuario sin autenticación en api
+# Obtener usuario sin autenticación en api - Get user without authentication in api
 GET http://localhost:5209/api/user/1?secure=true
 
 
 ###
-#Obtener usuario sin api key
+#Obtener usuario sin api key - Get user without api key
 PUT http://localhost:5209/api/user/1?authenticated=true&secure=true
 Content-Type: application/json
 X-Api-Key: thisIsABadPassword
@@ -74,7 +80,7 @@ X-Api-Key: thisIsABadPassword
 }
 
 ###
-# Intentar crear un usuario con datos inválidos
+# Intentar crear un usuario con datos inválidos - Try to create a user with invalid data
 POST http://localhost:5209/api/user?authenticated=true
 Content-Type: application/json
 X-Api-Key: thisIsABadPassword
@@ -86,11 +92,11 @@ X-Api-Key: thisIsABadPassword
 }
 ###
 
-# Intentar obtener un usuario que no existe
+# Intentar obtener un usuario que no existe - Try to get a user that does not exist
 GET http://localhost:5209/api/user/999?authenticated=true
 ###
 
-# Intentar actualizar un usuario que no existe
+# Intentar actualizar un usuario que no existe - Try to update a user that does not exist
 PUT http://localhost:5209/api/user/999?authenticated=true
 Content-Type: application/json
 X-Api-Key: thisIsABadPassword
@@ -102,7 +108,7 @@ X-Api-Key: thisIsABadPassword
 }
 ###
 
-# Intentar eliminar un usuario que no existe
+# Intentar eliminar un usuario que no existe - Try to delete a user that does not exist
 DELETE http://localhost:5209/api/user/999
 X-Api-Key: thisIsABadPassword
 ###
