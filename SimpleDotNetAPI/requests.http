@@ -1,0 +1,108 @@
+
+GET http://localhost:5209/service?authenticated=true&secure=true
+###
+GET http://localhost:5209/api/user?authenticated=true&secure=true&input=<script>alert('Hacked!');</script>
+###
+# Obtener todos los usuarios
+GET http://localhost:5209/api/user?authenticated=true&secure=true
+###
+
+# Obtener un usuario por ID
+GET http://localhost:5209/api/user/1?authenticated=true&secure=true
+###
+
+# Crear un nuevo usuario
+POST http://localhost:5209/api/user?authenticated=true&secure=true
+Content-Type: application/json
+X-Api-Key: thisIsABadPassword
+{
+  "Document": "1122334455",
+  "Name": "Carlos López",
+  "Email": "carlos.lopez@example.com",
+  "PhoneNumber": "1234567"
+}
+###
+
+# Editar un usuario existente
+PUT http://localhost:5209/api/user/1?authenticated=true&secure=true
+Content-Type: application/json
+X-Api-Key: thisIsABadPassword
+
+{
+  "Document": "123456789",
+  "Name": "Juan Pérez Actualizado",
+  "Email": "juan.perez.actualizado@example.com",
+  "PhoneNumber": "1234567"
+}
+###
+
+# Eliminar un usuario
+DELETE http://localhost:5209/api/user/1?authenticated=true&secure=true
+X-Api-Key: thisIsABadPassword
+###
+
+# Crear otro usuario
+POST http://localhost:5209/api/user?authenticated=true&secure=true
+Content-Type: application/json
+X-Api-Key: thisIsABadPassword
+{
+  "Document": "5566778899",
+  "Name": "Ana Martínez",
+  "Email": "ana.martinez@example.com",
+  "PhoneNumber": "1234567"
+}
+
+###
+
+# Obtener todos los usuarios después de crear nuevos usuarios
+GET http://localhost:5209/api/user?authenticated=true&secure=true
+###
+# Obtener usuario sin autenticación en api
+GET http://localhost:5209/api/user/1?secure=true
+
+
+###
+#Obtener usuario sin api key
+PUT http://localhost:5209/api/user/1?authenticated=true&secure=true
+Content-Type: application/json
+X-Api-Key: thisIsABadPassword
+{
+  "Document": "123456789",
+  "Name": "Juan Pérez Actualizado",
+  "Email": "juan.perez.actualizado@example.com",
+  "PhoneNumber": "1234567"
+}
+
+###
+# Intentar crear un usuario con datos inválidos
+POST http://localhost:5209/api/user?authenticated=true
+Content-Type: application/json
+X-Api-Key: thisIsABadPassword
+{
+  "Document": "",
+  "Name": "",
+  "Email": "correo.invalido",
+  "PhoneNumber": "1234567"
+}
+###
+
+# Intentar obtener un usuario que no existe
+GET http://localhost:5209/api/user/999?authenticated=true
+###
+
+# Intentar actualizar un usuario que no existe
+PUT http://localhost:5209/api/user/999?authenticated=true
+Content-Type: application/json
+X-Api-Key: thisIsABadPassword
+{
+  "Document": "0000000000",
+  "Name": "Usuario No Existente",
+  "Email": "no.existe@example.com",
+  "PhoneNumber": "1234567"
+}
+###
+
+# Intentar eliminar un usuario que no existe
+DELETE http://localhost:5209/api/user/999
+X-Api-Key: thisIsABadPassword
+###

@@ -1,0 +1,6 @@
+@SimpleDotNetAPI_HostAddress = http://localhost:5209
+
+GET {{SimpleDotNetAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
